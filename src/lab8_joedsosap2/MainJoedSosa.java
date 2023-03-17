@@ -171,7 +171,7 @@ public class MainJoedSosa extends javax.swing.JFrame {
     }
       public static void add(){
           //agregar
-        Dba db = new Dba("./base1.mdb");
+        Dba db = new Dba("./base.mdb");
         db.conectar();
         try {
             int c;
@@ -191,7 +191,7 @@ public class MainJoedSosa extends javax.swing.JFrame {
         
        public static void mod(){
           //modificar
-       Dba db = new Dba("./base1.mdb");
+       Dba db = new Dba("./base.mdb");
         db.conectar();
         try {
             db.query.execute("update alumnos set nombre='Donald Trump' where cuenta=5000");
@@ -205,7 +205,7 @@ public class MainJoedSosa extends javax.swing.JFrame {
        public static void eliminar(){
        
        //eliminar
-       Dba db = new Dba("./base1.mdb");
+       Dba db = new Dba("./base.mdb");
         db.conectar();
         try {
             db.query.execute("delete from alumnos where cuenta=5000");
