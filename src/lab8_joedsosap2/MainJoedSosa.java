@@ -256,7 +256,7 @@ public class MainJoedSosa extends javax.swing.JFrame {
 
     private void jb_agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_agregarMouseClicked
         Seres seres = new Seres(tf_name.getText(), (String)cb_uni.getSelectedItem(), (String)cb_raza.getSelectedItem(), (int)js_anios.getValue(), (int)js_poder.getValue(), tf_id.getText());
-        Dba db = new Dba("./base.mdb");
+        Dba db = new Dba("./C://Base//base.mdb");
         db.conectar();
         try {
             db.query.execute("INSERT INTO serevivos"
