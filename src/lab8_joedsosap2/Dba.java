@@ -19,8 +19,8 @@ public class Dba {
     
    public void conectar(){
         try {
-           // String driver = "jdbc:ucanaccess://";
             String driver = "jdbc:ucanaccess://";
+            
             dbcon = DriverManager.getConnection(driver+base_datos,"","");
             query = dbcon.createStatement();
         } catch (Exception e) {

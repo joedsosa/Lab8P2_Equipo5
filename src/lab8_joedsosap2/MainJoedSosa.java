@@ -256,11 +256,11 @@ public class MainJoedSosa extends javax.swing.JFrame {
 
     private void jb_agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_agregarMouseClicked
         Seres seres = new Seres(tf_name.getText(), (String)cb_uni.getSelectedItem(), (String)cb_raza.getSelectedItem(), (int)js_anios.getValue(), (int)js_poder.getValue(), tf_id.getText());
-        Dba db = new Dba("./C://Base//base.mdb");
+        Dba db = new Dba("./base.accdb");
         db.conectar();
         try {
-            db.query.execute("INSERT INTO serevivos"
-                    + " (cuenta,nombre)"
+            db.query.execute("INSERT INTO seresvivos"
+                    + " (Nombre,Identificacion,Poder,Años,Universo,Raza)"
                     + " VALUES ('" + seres.getNombre() + "' , '" + seres.getId() +"' , '"+seres.getPoder()+"' , '"+seres.getAnio()+"' , '"+seres.getUniversoproce()+"' , '"+seres.getRaza()+ "')");
             db.commit();
         } catch (SQLException ex) {
@@ -305,7 +305,7 @@ public class MainJoedSosa extends javax.swing.JFrame {
     }
     public static void listar (){
         
-        Dba db = new Dba("./base.mdb");
+        Dba db = new Dba("./base.accdb");
         db.conectar();
         try {
             db.query.execute("select cuenta,nombre from alumnos");
@@ -318,29 +318,11 @@ public class MainJoedSosa extends javax.swing.JFrame {
         }
         db.desconectar();
     }
-      public static void add(){
-          //agregar
-        Dba db = new Dba("./base.mdb");
-        db.conectar();
-        try {
-            int c;
-            String n;
-            c = Integer.parseInt(JOptionPane.showInputDialog("Codigo"));
-            n = JOptionPane.showInputDialog("Nombre");
-            db.query.execute("INSERT INTO alumnos"
-                    + " (cuenta,nombre)"
-                    + " VALUES ('" + c + "', '" + n + "')");
-            db.commit();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        db.desconectar();
-       }
-        
-        
+     
+          
        public static void mod(){
           //modificar
-       Dba db = new Dba("./base.mdb");
+       Dba db = new Dba("./base.accdb");
         db.conectar();
         try {
             db.query.execute("update alumnos set nombre='Donald Trump' where cuenta=5000");
@@ -354,7 +336,7 @@ public class MainJoedSosa extends javax.swing.JFrame {
        public static void eliminar(){
        
        //eliminar
-       Dba db = new Dba("./base.mdb");
+       Dba db = new Dba("./base.accdb");
         db.conectar();
         try {
             db.query.execute("delete from alumnos where cuenta=5000");
