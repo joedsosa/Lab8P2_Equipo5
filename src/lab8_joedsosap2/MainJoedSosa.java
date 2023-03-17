@@ -95,6 +95,11 @@ public class MainJoedSosa extends javax.swing.JFrame {
 
         jb_agregar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jb_agregar.setText("Agregar");
+        jb_agregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_agregarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -248,6 +253,21 @@ public class MainJoedSosa extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jb_agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_agregarMouseClicked
+        Seres seres = new Seres(tf_name.getText(), (String)cb_uni.getSelectedItem(), (String)cb_raza.getSelectedItem(), (int)js_anios.getValue(), (int)js_poder.getValue(), tf_id.getText());
+        Dba db = new Dba("./base.mdb");
+        db.conectar();
+        try {
+            db.query.execute("INSERT INTO serevivos"
+                    + " (cuenta,nombre)"
+                    + " VALUES ('" + seres.getNombre() + "' , '" + seres.getId() +"' , '"+seres.getPoder()+"' , '"+seres.getAnio()+"' , '"+seres.getUniversoproce()+"' , '"+seres.getRaza()+ "')");
+            db.commit();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+    }//GEN-LAST:event_jb_agregarMouseClicked
 
     /**
      * @param args the command line arguments
