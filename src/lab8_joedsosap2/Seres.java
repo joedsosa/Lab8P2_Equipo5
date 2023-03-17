@@ -9,13 +9,13 @@ package lab8_joedsosap2;
  * @author joeds
  */
 public class Seres {
-   private String nombre,universoproce,raza; 
-   private int anio,poder,id;
+   private String nombre,universoproce,raza,id; 
+   private int anio,poder;
 
     public Seres() {
     }
 
-    public Seres(String nombre, String universoproce, String raza, int anio, int poder, int id) {
+    public Seres(String nombre, String universoproce, String raza, int anio, int poder, String id) {
         this.nombre = nombre;
         this.universoproce = universoproce;
         this.raza = raza;
@@ -64,11 +64,11 @@ public class Seres {
         this.poder = poder;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
