@@ -4,12 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
-public class db {
+public class Dba {
     private String base_datos;
     private Connection dbcon;
     public Statement query;
     
-    public db(String base_datos){
+    public Dba(String base_datos){
         this.base_datos=base_datos;
     }
 

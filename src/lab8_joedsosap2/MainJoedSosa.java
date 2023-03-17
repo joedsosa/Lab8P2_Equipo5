@@ -4,7 +4,12 @@
  */
 package lab8_joedsosap2;
 
+
 import javax.swing.SpinnerNumberModel;
+
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -278,6 +283,78 @@ public class MainJoedSosa extends javax.swing.JFrame {
             }
         });
     }
+    public static void listar (){
+        
+        Dba db = new Dba("./base.mdb");
+        db.conectar();
+        try {
+            db.query.execute("select cuenta,nombre from alumnos");
+            ResultSet rs = db.query.getResultSet();
+            while (rs.next()) {
+                System.out.println(rs.getInt(1) + "--->" + rs.getString(2));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+    }
+      public static void add(){
+          //agregar
+        Dba db = new Dba("./base.mdb");
+        db.conectar();
+        try {
+            int c;
+            String n;
+            c = Integer.parseInt(JOptionPane.showInputDialog("Codigo"));
+            n = JOptionPane.showInputDialog("Nombre");
+            db.query.execute("INSERT INTO alumnos"
+                    + " (cuenta,nombre)"
+                    + " VALUES ('" + c + "', '" + n + "')");
+            db.commit();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+       }
+        
+        
+       public static void mod(){
+          //modificar
+       Dba db = new Dba("./base.mdb");
+        db.conectar();
+        try {
+            db.query.execute("update alumnos set nombre='Donald Trump' where cuenta=5000");
+            db.commit();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+       }
+        
+       public static void eliminar(){
+       
+       //eliminar
+       Dba db = new Dba("./base.mdb");
+        db.conectar();
+        try {
+            db.query.execute("delete from alumnos where cuenta=5000");
+            db.commit();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+       }
+       
+
+
+
+       
+       
+       
+
+    
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cb_raza;
