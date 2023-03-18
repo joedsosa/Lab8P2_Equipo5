@@ -4,11 +4,14 @@
  */
 package lab8_joedsosap2;
 
-
 import javax.swing.SpinnerNumberModel;
 
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,6 +31,13 @@ public class MainJoedSosa extends javax.swing.JFrame {
         SpinnerNumberModel model2 = new SpinnerNumberModel(0, 0, 100, 1);
         js_poder.setModel(model);
         js_anios.setModel(model2);
+        llenarUniversos();
+        llenarSeres();
+        x();
+        llenarComboBoxUniverso(cb_uni);
+        llenarComboBoxUniverso(cb_uni1);
+        llenarLista();
+
     }
 
     /**
@@ -39,8 +49,16 @@ public class MainJoedSosa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pm_elim = new javax.swing.JPopupMenu();
+        mi_eliminar = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        tf_nameUni = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -56,16 +74,91 @@ public class MainJoedSosa extends javax.swing.JFrame {
         jb_agregar = new javax.swing.JButton();
         js_poder = new javax.swing.JSpinner();
         jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
         jPanel4 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        tf_name1 = new javax.swing.JTextField();
+        tf_id1 = new javax.swing.JTextField();
+        js_anios1 = new javax.swing.JSpinner();
+        cb_uni1 = new javax.swing.JComboBox<>();
+        cb_raza1 = new javax.swing.JComboBox<>();
+        jb_agregar1 = new javax.swing.JButton();
+        js_poder1 = new javax.swing.JSpinner();
+        jLabel14 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jList2 = new javax.swing.JList<>();
+        jButton2 = new javax.swing.JButton();
+        jProgressBar1 = new javax.swing.JProgressBar();
+
+        mi_eliminar.setText("ELIMINAR");
+        mi_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_eliminarActionPerformed(evt);
+            }
+        });
+        pm_elim.add(mi_eliminar);
+        pm_elim.add(jSeparator1);
+
+        jMenuItem1.setText("Modificar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        pm_elim.add(jMenuItem1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
         jTabbedPane1.setBackground(new java.awt.Color(153, 255, 255));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel7.setText("Nombre del universo");
+
+        jButton1.setText("AGREGAR");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63)
+                        .addComponent(tf_nameUni, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(196, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_nameUni, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
+        );
+
+        jTabbedPane1.addTab("Agregar universo", jPanel6);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Nombre");
@@ -116,7 +209,7 @@ public class MainJoedSosa extends javax.swing.JFrame {
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 273, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,66 +256,194 @@ public class MainJoedSosa extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cb_raza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jb_agregar, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jb_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53))
         );
 
-        jTabbedPane1.addTab("Agregar", jPanel2);
+        jTabbedPane1.addTab("Agregar ser", jPanel2);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 635, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 474, Short.MAX_VALUE)
-        );
+        jList1.setModel(new DefaultListModel());
+        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList1MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jList1);
 
-        jTabbedPane1.addTab("Modificar", jPanel3);
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel8.setText("Nombre");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel9.setText("ID");
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel10.setText("Años");
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel11.setText("Poder");
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel12.setText("Raza");
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel13.setText("Universo de procedencia");
+
+        tf_name1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        tf_id1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        cb_uni1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cb_raza1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Humano", "Amanto" }));
+
+        jb_agregar1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jb_agregar1.setText("MODIFICAR");
+        jb_agregar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_agregar1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 635, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(114, 114, 114)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tf_name1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_id1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(cb_raza1, javax.swing.GroupLayout.Alignment.LEADING, 0, 125, Short.MAX_VALUE)
+                        .addComponent(cb_uni1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(js_anios1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(js_poder1, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addGap(80, 80, 80))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jb_agregar1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 474, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_name1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_id1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(js_poder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(js_anios1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_uni1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_raza1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jb_agregar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Eliminar", jPanel4);
+        jLabel14.setText("CLICK DERECHO PARA ELIMINAR SER VIVO");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel14)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26))
+        );
+
+        jTabbedPane1.addTab("Modificar", jPanel3);
+
+        jList2.setModel(new DefaultListModel());
+        jScrollPane1.setViewportView(jList2);
+
+        jButton2.setText("Cargar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 758, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(43, 43, 43))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Guardar/Cargar", jPanel5);
@@ -255,19 +476,114 @@ public class MainJoedSosa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jb_agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_agregarMouseClicked
-        Seres seres = new Seres(tf_name.getText(), (String)cb_uni.getSelectedItem(), (String)cb_raza.getSelectedItem(), (int)js_anios.getValue(), (int)js_poder.getValue(), tf_id.getText());
+        if (!universos.isEmpty()) {
+            universo_seleccionado = (Universo) cb_uni.getSelectedItem();
+            Seres seres = new Seres(tf_name.getText(), universo_seleccionado.toString(), (String) cb_raza.getSelectedItem(), (int) js_anios.getValue(), (int) js_poder.getValue(), tf_id.getText());
+            Dba db = new Dba("./base.accdb");
+            db.conectar();
+            try {
+                db.query.execute("INSERT INTO seresvivos"
+                        + " (Nombre,Identificacion,Poder,Años,Universo,Raza)"
+                        + " VALUES ('" + seres.getNombre() + "' , '" + seres.getId() + "' , '" + seres.getPoder() + "' , '" + seres.getAnio() + "' , '" + seres.getUniversoproce() + "' , '" + seres.getRaza() + "')");
+                db.commit();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            db.desconectar();
+            JOptionPane.showMessageDialog(this, "Agregado exitosamente");
+            seresvivos.add(seres);
+            universo_seleccionado.getSeresvivos().add(seres);
+            llenarLista();
+        } else {
+            JOptionPane.showMessageDialog(this, "NO HAY UNIVERSOS DISPONIBLES");
+        }
+
+    }//GEN-LAST:event_jb_agregarMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        Universo uni = new Universo(tf_nameUni.getText());
         Dba db = new Dba("./base.accdb");
         db.conectar();
         try {
-            db.query.execute("INSERT INTO seresvivos"
-                    + " (Nombre,Identificacion,Poder,Años,Universo,Raza)"
-                    + " VALUES ('" + seres.getNombre() + "' , '" + seres.getId() +"' , '"+seres.getPoder()+"' , '"+seres.getAnio()+"' , '"+seres.getUniversoproce()+"' , '"+seres.getRaza()+ "')");
+            db.query.execute("INSERT INTO universo"
+                    + " (Nombre)"
+                    + " VALUES ('" + uni.getNombre() + "')");
             db.commit();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         db.desconectar();
-    }//GEN-LAST:event_jb_agregarMouseClicked
+        JOptionPane.showMessageDialog(this, "Agregado exitosamente");
+        universos.add(uni);
+        llenarComboBoxUniverso(cb_uni);
+        llenarComboBoxUniverso(cb_uni1);
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jb_agregar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_agregar1MouseClicked
+        Dba db = new Dba("./base.accdb");
+        db.conectar();
+        
+        try {
+            db.query.execute("update seresvivos set Nombre='"+tf_name1.getText()+"',Identificacion='"+tf_id1.getText()+"',Poder='"+js_poder1.getValue()+"',Años='"+js_poder1.getValue()+"',Universo='"+cb_uni1.getSelectedItem().toString()+"',Raza='"+cb_raza1.getSelectedItem().toString()+"' where Identificacion=" + servivo_seleccionado.getId() + "");
+            db.commit();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+        servivo_seleccionado.setNombre(tf_name1.getText());
+        servivo_seleccionado.setId(tf_id1.getText());
+        servivo_seleccionado.setPoder((int)js_poder1.getValue());
+        servivo_seleccionado.setRaza(cb_raza1.getSelectedItem().toString());
+        servivo_seleccionado.setAnio((int)js_poder1.getValue());
+        servivo_seleccionado.setUniversoproce(cb_uni1.getSelectedItem().toString());
+        
+        JOptionPane.showMessageDialog(this, "Modificado exitosamente");
+        
+        llenarLista();
+    }//GEN-LAST:event_jb_agregar1MouseClicked
+
+    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
+        if (jList1.getSelectedIndex() >= 0) {
+            if (evt.isMetaDown()) {
+                int index = jList1.getSelectedIndex();
+                servivo_seleccionado = seresvivos.get(index);
+                pm_elim.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+
+        }
+
+    }//GEN-LAST:event_jList1MouseClicked
+
+    private void mi_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_eliminarActionPerformed
+        Dba db = new Dba("./base.accdb");
+        db.conectar();
+        try {
+            db.query.execute("delete from seresvivos where Identificacion=" + servivo_seleccionado.getId() + "");
+            db.commit();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+        seresvivos.remove(servivo_seleccionado);
+        llenarLista();
+    }//GEN-LAST:event_mi_eliminarActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        tf_name1.setText(servivo_seleccionado.getNombre());
+        tf_id1.setText(servivo_seleccionado.getId());
+        js_anios1.setValue(servivo_seleccionado.getAnio());
+        js_poder1.setValue(servivo_seleccionado.getPoder());
+        cb_uni1.setSelectedItem(servivo_seleccionado.getUniversoproce());
+        cb_raza1.setSelectedItem(servivo_seleccionado.getRaza());
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        DefaultListModel modelo = (DefaultListModel)jList2.getModel();
+        modelo.clear();
+        jList2.setModel(modelo);
+        hilo1 hilo = new hilo1(jProgressBar1, seresvivos.size(), seresvivos, jList2);
+        hilo.start();
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -303,82 +619,121 @@ public class MainJoedSosa extends javax.swing.JFrame {
             }
         });
     }
-    public static void listar (){
-        
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cb_raza;
+    private javax.swing.JComboBox<String> cb_raza1;
+    private javax.swing.JComboBox<String> cb_uni;
+    private javax.swing.JComboBox<String> cb_uni1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> jList2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton jb_agregar;
+    private javax.swing.JButton jb_agregar1;
+    private javax.swing.JSpinner js_anios;
+    private javax.swing.JSpinner js_anios1;
+    private javax.swing.JSpinner js_poder;
+    private javax.swing.JSpinner js_poder1;
+    private javax.swing.JMenuItem mi_eliminar;
+    private javax.swing.JPopupMenu pm_elim;
+    private javax.swing.JTextField tf_id;
+    private javax.swing.JTextField tf_id1;
+    private javax.swing.JTextField tf_name;
+    private javax.swing.JTextField tf_name1;
+    private javax.swing.JTextField tf_nameUni;
+    // End of variables declaration//GEN-END:variables
+    public static ArrayList<Universo> universos = new ArrayList<>();
+    public static ArrayList<Seres> seresvivos = new ArrayList<>();
+    public static Universo universo_seleccionado;
+    public Seres servivo_seleccionado;
+
+    public static void llenarSeres() {
+
         Dba db = new Dba("./base.accdb");
         db.conectar();
         try {
-            db.query.execute("select cuenta,nombre from alumnos");
+            db.query.execute("select Nombre,Identificacion,Poder,Años,Universo,Raza from seresvivos");
             ResultSet rs = db.query.getResultSet();
             while (rs.next()) {
-                System.out.println(rs.getInt(1) + "--->" + rs.getString(2));
+                seresvivos.add(new Seres(rs.getString(1), rs.getString(5), rs.getString(6), rs.getInt(4), rs.getInt(3), rs.getString(2)));
+
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         db.desconectar();
     }
-     
-          
-       public static void mod(){
-          //modificar
-       Dba db = new Dba("./base.accdb");
+
+    public static void llenarUniversos() {
+
+        Dba db = new Dba("./base.accdb");
         db.conectar();
         try {
-            db.query.execute("update alumnos set nombre='Donald Trump' where cuenta=5000");
-            db.commit();
+            db.query.execute("select Nombre from universo");
+            ResultSet rs = db.query.getResultSet();
+            while (rs.next()) {
+                universos.add(new Universo(rs.getString(1)));
+
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         db.desconectar();
-       }
-        
-       public static void eliminar(){
-       
-       //eliminar
-       Dba db = new Dba("./base.accdb");
-        db.conectar();
-        try {
-            db.query.execute("delete from alumnos where cuenta=5000");
-            db.commit();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+    }
+
+    public static void x() {
+        for (Universo u : universos) {
+            for (Seres sv : seresvivos) {
+                if (sv.getUniversoproce().equals(u.getNombre())) {
+                    u.getSeresvivos().add(sv);
+                }
+            }
         }
-        db.desconectar();
-       }
-       
+    }
 
+    private void llenarComboBoxUniverso(JComboBox cb) {
+        cb.removeAllItems();
+        for (Universo universo : universos) {
+            cb.addItem(universo);
+        }
+    }
 
+    private void llenarLista() {
+        DefaultListModel modelo = (DefaultListModel) jList1.getModel();
+        modelo.clear();
+        for (Seres sv : seresvivos) {
+            modelo.addElement(sv);
+        }
 
-       
-       
-       
+        jList1.setModel(modelo);
+    }
 
-    
-
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cb_raza;
-    private javax.swing.JComboBox<String> cb_uni;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JButton jb_agregar;
-    private javax.swing.JSpinner js_anios;
-    private javax.swing.JSpinner js_poder;
-    private javax.swing.JTextField tf_id;
-    private javax.swing.JTextField tf_name;
-    // End of variables declaration//GEN-END:variables
 }

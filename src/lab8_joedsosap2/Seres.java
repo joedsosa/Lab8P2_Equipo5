@@ -9,7 +9,7 @@ package lab8_joedsosap2;
  * @author joeds
  */
 public class Seres {
-   private String nombre,universoproce,raza,id; 
+   private String nombre,raza,id,universoproce; 
    private int anio,poder;
 
     public Seres() {
